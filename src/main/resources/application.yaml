@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: mvc-store
+  thymeleaf:
+    reactive:
+      max-chunk-size: 8192
+  data:
+    mongodb:
+      username: root
+      password: P%40ssword789
+      host: 192.168.1.14
+      port: 31317
+      database: trap-store
+      uri: mongodb://192.168.1.14:31317/trap-store?authSource=admin
+logging:
+  level:
+    com.mongodb: debug
