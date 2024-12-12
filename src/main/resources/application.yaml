@@ -12,6 +12,8 @@ spring:
       port: 31317
       database: trap-store
       uri: mongodb://192.168.1.14:31317/trap-store?authSource=admin
+store:
+  name: Sơn Lâm Wedding
 logging:
   level:
     com.mongodb: debug

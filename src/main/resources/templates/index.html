@@ -28,7 +28,7 @@
         };
     </script>
 
-    <title>eCommerece</title>
+    <title th:text="${@environment.getProperty('store.name')}"></title>
 </head>
 <body>
 
@@ -106,27 +106,10 @@
             <div class="aside_section overflow-y-auto">
                 <div class="categories w-full rounded-xl p-4 bg-white border shadow-lg">
                     <h1 class="text-xl font-semibold mb-4">CATEGORY</h1>
-                    <div class="border-b pb-3 text-lg text-gray-600">
+                    <div class="border-b pb-3 text-lg text-gray-600" th:each="category : ${categories}">
                         <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Shirt</a>
-                                <span>300</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Shorts & Jeans</a>
-                                <span>30</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Jacket</a>
-                                <span>50</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Dress & Frock</a>
-                                <span>120</span>
-                            </div>
                             <summary>
-                                <div class="flex items-center gap-2">
-                                    Clothes
+                                <div class="flex items-center gap-2" th:text="${category.getName()}">
                                     <img
                                             class="w-4 h-4"
                                             src="./assets/images/icons/dress.svg"
@@ -134,174 +117,10 @@
                                     />
                                 </div>
                             </summary>
-                        </details>
-                    </div>
-                    <div class="border-b pb-3 text-lg text-gray-600">
-                        <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Sports</a>
-                                <span>300</span>
+                            <div class="flex justify-between items-baseline text-sm" th:each="subCate : ${category.getSubcategories()}">
+                                <a href="#" th:text="${subCate.getName()}"></a>
+                                <span th:text="${subCate.getCount()}"></span>
                             </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Formal</a>
-                                <span>30</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Casual</a>
-                                <span>50</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Safety Shoes</a>
-                                <span>120</span>
-                            </div>
-                            <summary>
-                                <div class="flex items-center gap-2">
-                                    Footwear
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/shoes.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
-                        </details>
-                    </div>
-                    <div class="border-b pb-3 text-lg text-gray-600">
-                        <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Earrings</a>
-                                <span>300</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Couple Rings</a>
-                                <span>30</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Necklace</a>
-                                <span>50</span>
-                            </div>
-                            <summary>
-                                <div class="flex items-center gap-2">
-                                    Jewelry
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/jewelry.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
-                        </details>
-                    </div>
-                    <div class="border-b pb-3 text-lg text-gray-600">
-                        <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Clothes Perfume</a>
-                                <span>300</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Deodorant</a>
-                                <span>30</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Jacket</a>
-                                <span>50</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Dress & Frock</a>
-                                <span>120</span>
-                            </div>
-                            <summary>
-                                <div class="flex items-center gap-2">
-                                    Perfume
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/perfume.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
-                        </details>
-                    </div>
-                    <div class="border-b pb-3 text-lg text-gray-600">
-                        <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Shampoo</a>
-                                <span>300</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Sunscreen</a>
-                                <span>30</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Body Wash</a>
-                                <span>50</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Makeup Kit</a>
-                                <span>120</span>
-                            </div>
-                            <summary>
-                                <div class="flex items-center gap-2">
-                                    Cosmetics
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/cosmetics.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
-                        </details>
-                    </div>
-                    <div class="border-b pb-3 text-lg text-gray-600">
-                        <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Sunglasses</a>
-                                <span>23</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Lenses</a>
-                                <span>53</span>
-                            </div>
-                            <summary>
-                                <div class="flex items-center gap-2">
-                                    Glasses
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/glasses.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
-                        </details>
-                    </div>
-                    <div class="border-b pb-3 text-lg text-gray-600">
-                        <details>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Wallet</a>
-                                <span>300</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Purse</a>
-                                <span>30</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Gym Backpack</a>
-                                <span>50</span>
-                            </div>
-                            <div class="flex justify-between items-baseline text-sm">
-                                <a href="#">Shopping Bag</a>
-                                <span>120</span>
-                            </div>
-                            <summary>
-                                <div class="flex items-center gap-2">
-                                    Bags
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/bag.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
                         </details>
                     </div>
                 </div>
@@ -410,190 +229,242 @@
             </div>
         </aside>
 
-        <div class="products w-full lg:w-3/4 flex flex-col">
-            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 class="sr-only">Products</h2>
+        <div
+                id="productsCatalog"
+                class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <h2 class="sr-only">Products</h2>
 
-                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div
 
-                    <a href="#" class="group">
-                        <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg"
-                             alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-                             class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
-                        <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
-                    </a>
-
-                </div>
+                    class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                <a href="#" class="group" th:each="product : ${productPage.iterator()}">
+                    <img th:src="${product.getImage()}"
+                         th:alt="${product.getName()}"
+                         class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
+                    <h3 class="mt-4 text-sm text-gray-700" th:text="${product.getName()}"></h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900" th:text="${product.getPrice()} + 'đ'">
+                    </p>
+                </a>
             </div>
 
-
-            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="NewArrivals flex flex-col gap-4">
-                    <h1 class="text-xl font-semibold border-b pb-4">New Arrivals</h1>
-
-                    <div
-                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"
-                    >
-                        <div class="w-20 h-20 p-2">
-                            <img
-                                    class="w-full h-full"
-                                    src="./assets/images/products/clothes-1.jpg"
-                                    alt=""
-                            />
-                        </div>
-                        <div class="text-gray-700">
-                            <h4 class="font-bold text-gray-900 text-sm text-sm">
-                                Relaxed Short Full...
-                            </h4>
-                            <h4>Clothes</h4>
-                            <div class="flex items-center justify-start gap-4">
-                                <strong class="text-red-400">$7.00</strong>
-                                <s class="text-gray-500">$14.00</s>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"
-                    >
-                        <div class="w-20 h-20 p-2">
-                            <img
-                                    class="w-full h-full"
-                                    src="./assets/images/products/clothes-2.jpg"
-                                    alt=""
-                            />
-                        </div>
-                        <div class="text-gray-700">
-                            <h4 class="font-bold text-gray-900 text-sm text-sm">
-                                Girls Pnk Embro Desi...
-                            </h4>
-                            <h4>Clothes</h4>
-                            <div class="flex items-center justify-start gap-4">
-                                <strong class="text-red-400">$21.00</strong>
-                                <s class="text-gray-500">$24.00</s>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"
-                    >
-                        <div class="w-20 h-20 p-2">
-                            <img
-                                    class="w-full h-full"
-                                    src="./assets/images/products/clothes-3.jpg"
-                                    alt=""
-                            />
-                        </div>
-                        <div class="text-gray-700">
-                            <h4 class="font-bold text-gray-900 text-sm text-sm">
-                                Black Floral Wrap...
-                            </h4>
-                            <h4>Clothes</h4>
-                            <div class="flex items-center justify-start gap-4">
-                                <strong class="text-red-400">$5.00</strong>
-                                <s class="text-gray-500">$15.00</s>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"
-                    >
-                        <div class="w-20 h-20 p-2">
-                            <img
-                                    class="w-full h-full"
-                                    src="./assets/images/products/shirt-1.jpg"
-                                    alt=""
-                            />
-                        </div>
-                        <div class="text-gray-700">
-                            <h4 class="font-bold text-gray-900 text-sm text-sm">
-                                Pure Garment Dye...
-                            </h4>
-                            <h4>Mens Fashion</h4>
-                            <div class="flex items-center justify-start gap-4">
-                                <strong class="text-red-400">$30.00</strong>
-                                <s class="text-gray-500">$40.00</s>
-                            </div>
-                        </div>
-                    </div>
+            <div
+                    class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                <div>
+                    <p class="text-sm text-gray-700">
+                        Showing
+                        <span class="font-medium" th:text="${productPage.getNumber()*productPage.getSize()}"></span>
+                        to
+                        <span class="font-medium" th:text="${productPage.getNumber()*productPage.getSize()  + productPage.getSize()}"></span>
+                        of
+                        <span class="font-medium" th:text="${productPage.getTotalElements()}"></span>
+                        results
+                    </p>
                 </div>
+                <div>
+                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                        <a
+                                th:if="${productPage.getNumber() > 0}"
+                                th:href="'?page='+${productPage.getNumber()-1} + '#productsCatalog'"
+                                class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                            <span class="sr-only">Previous</span>
+                            <svg class="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <th:block th:each="pageNum : ${prevPages}">
+                            <a th:href="'?page='+${pageNum}+'#productsCatalog'"
+                               th:text="${pageNum}"
+                               class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"></a>
+                        </th:block>
 
+                        <a th:text="${productPage.getNumber()}"
+                           class="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"></a>
+
+                        <th:block th:each="pageNum : ${nextPages}">
+                            <a th:href="'?page='+${pageNum}+'#productsCatalog'"
+                               th:text="${pageNum}"
+                               class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"></a>
+                        </th:block>
+
+                        <a th:if="${productPage.hasNext()}"
+                           th:href="'?page='+${productPage.nextPageable().getPageNumber() + '#productsCatalog'}"
+                           class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                            <span class="sr-only">Next</span>
+                            <svg class="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </nav>
+                </div>
             </div>
-
-            <!--            <div class="day my-10">-->
-            <!--                <h1 class="font-semibold text-xl border-b py-4">Deal Of The Day</h1>-->
-            <!--                <div-->
-            <!--                        class="mt-10 w-full h-auto border rounded-lg flex flex-col lg:flex-row justify-between"-->
-            <!--                >-->
-            <!--                    <img-->
-            <!--                            class="lg:w-1/2"-->
-            <!--                            src="./assets/images/products/shampoo.jpg"-->
-            <!--                            alt=""-->
-            <!--                    />-->
-            <!--                    <div class="lg:w-1/2 flex flex-col items-start gap-2 p-4">-->
-            <!--                        <div class="stars text-yellow-500">-->
-            <!--                            <ion-icon name="star"></ion-icon>-->
-            <!--                            <ion-icon name="star"></ion-icon>-->
-            <!--                            <ion-icon name="star"></ion-icon>-->
-            <!--                            <ion-icon name="star"></ion-icon>-->
-            <!--                            <ion-icon name="star-half-outline"></ion-icon>-->
-            <!--                        </div>-->
-            <!--                        <h4 class="font-bold text-lg">-->
-            <!--                            SHAMPOO, CONDITIONER & FACEWASH PACKS-->
-            <!--                        </h4>-->
-            <!--                        <p>-->
-            <!--                            Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor sit-->
-            <!--                            amet consectetur Lorem ipsum dolor-->
-            <!--                        </p>-->
-            <!--                        <div>-->
-            <!--                            <strong class="text-red-400 font-bold text-xl">$150.00</strong>-->
-            <!--                            <s class="text-xl text-gray-500">$200.00</s>-->
-            <!--                        </div>-->
-            <!--                        <button-->
-            <!--                                class="bg-red-500 text-white rounded-xl py-2 px-4 text-md font-semibold"-->
-            <!--                        >-->
-            <!--                            ADD TO CART-->
-            <!--                        </button>-->
-            <!--                        <h3 class="mt-4 font-semibold text-sm">HURRY UP! OFFER ENDS IN:</h3>-->
-            <!--                        <div-->
-            <!--                                id="reverseTimer"-->
-            <!--                                class="flex justify-between items-center gap-4 font-semibold text-sm text-black"-->
-            <!--                        >-->
-            <!--                            <h1-->
-            <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
-            <!--                                    id="days"-->
-            <!--                            ></h1>-->
-            <!--                            <h1-->
-            <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
-            <!--                                    id="hour"-->
-            <!--                            ></h1>-->
-            <!--                            <h1-->
-            <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
-            <!--                                    id="minute"-->
-            <!--                            ></h1>-->
-            <!--                            <h1-->
-            <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
-            <!--                                    id="second"-->
-            <!--                            ></h1>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
-            <!--            <div class="newProductsContainer">-->
-            <!--                <h1 class="font-semibold text-xl border-b py-4">New Products</h1>-->
-            <!--                <div-->
-            <!--                        id="newProducts"-->
-            <!--                        class="newProducts grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"-->
-            <!--                ></div>-->
-            <!--            </div>-->
         </div>
+
+        <!--        <div class="products w-full lg:w-3/4 flex flex-col">-->
+
+        <!--            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">-->
+        <!--                <div class="NewArrivals flex flex-col gap-4">-->
+        <!--                    <h1 class="text-xl font-semibold border-b pb-4">New Arrivals</h1>-->
+
+        <!--                    <div-->
+        <!--                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"-->
+        <!--                    >-->
+        <!--                        <div class="w-20 h-20 p-2">-->
+        <!--                            <img-->
+        <!--                                    class="w-full h-full"-->
+        <!--                                    src="./assets/images/products/clothes-1.jpg"-->
+        <!--                                    alt=""-->
+        <!--                            />-->
+        <!--                        </div>-->
+        <!--                        <div class="text-gray-700">-->
+        <!--                            <h4 class="font-bold text-gray-900 text-sm text-sm">-->
+        <!--                                Relaxed Short Full...-->
+        <!--                            </h4>-->
+        <!--                            <h4>Clothes</h4>-->
+        <!--                            <div class="flex items-center justify-start gap-4">-->
+        <!--                                <strong class="text-red-400">$7.00</strong>-->
+        <!--                                <s class="text-gray-500">$14.00</s>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+
+        <!--                    <div-->
+        <!--                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"-->
+        <!--                    >-->
+        <!--                        <div class="w-20 h-20 p-2">-->
+        <!--                            <img-->
+        <!--                                    class="w-full h-full"-->
+        <!--                                    src="./assets/images/products/clothes-2.jpg"-->
+        <!--                                    alt=""-->
+        <!--                            />-->
+        <!--                        </div>-->
+        <!--                        <div class="text-gray-700">-->
+        <!--                            <h4 class="font-bold text-gray-900 text-sm text-sm">-->
+        <!--                                Girls Pnk Embro Desi...-->
+        <!--                            </h4>-->
+        <!--                            <h4>Clothes</h4>-->
+        <!--                            <div class="flex items-center justify-start gap-4">-->
+        <!--                                <strong class="text-red-400">$21.00</strong>-->
+        <!--                                <s class="text-gray-500">$24.00</s>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div-->
+        <!--                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"-->
+        <!--                    >-->
+        <!--                        <div class="w-20 h-20 p-2">-->
+        <!--                            <img-->
+        <!--                                    class="w-full h-full"-->
+        <!--                                    src="./assets/images/products/clothes-3.jpg"-->
+        <!--                                    alt=""-->
+        <!--                            />-->
+        <!--                        </div>-->
+        <!--                        <div class="text-gray-700">-->
+        <!--                            <h4 class="font-bold text-gray-900 text-sm text-sm">-->
+        <!--                                Black Floral Wrap...-->
+        <!--                            </h4>-->
+        <!--                            <h4>Clothes</h4>-->
+        <!--                            <div class="flex items-center justify-start gap-4">-->
+        <!--                                <strong class="text-red-400">$5.00</strong>-->
+        <!--                                <s class="text-gray-500">$15.00</s>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div-->
+        <!--                            class="w-full h-28 bg-white border shadow-sm rounded-lg flex items-center justify-start gap-2 cursor-pointer"-->
+        <!--                    >-->
+        <!--                        <div class="w-20 h-20 p-2">-->
+        <!--                            <img-->
+        <!--                                    class="w-full h-full"-->
+        <!--                                    src="./assets/images/products/shirt-1.jpg"-->
+        <!--                                    alt=""-->
+        <!--                            />-->
+        <!--                        </div>-->
+        <!--                        <div class="text-gray-700">-->
+        <!--                            <h4 class="font-bold text-gray-900 text-sm text-sm">-->
+        <!--                                Pure Garment Dye...-->
+        <!--                            </h4>-->
+        <!--                            <h4>Mens Fashion</h4>-->
+        <!--                            <div class="flex items-center justify-start gap-4">-->
+        <!--                                <strong class="text-red-400">$30.00</strong>-->
+        <!--                                <s class="text-gray-500">$40.00</s>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="day my-10">-->
+        <!--                <h1 class="font-semibold text-xl border-b py-4">Deal Of The Day</h1>-->
+        <!--                <div-->
+        <!--                        class="mt-10 w-full h-auto border rounded-lg flex flex-col lg:flex-row justify-between"-->
+        <!--                >-->
+        <!--                    <img-->
+        <!--                            class="lg:w-1/2"-->
+        <!--                            src="./assets/images/products/shampoo.jpg"-->
+        <!--                            alt=""-->
+        <!--                    />-->
+        <!--                    <div class="lg:w-1/2 flex flex-col items-start gap-2 p-4">-->
+        <!--                        <div class="stars text-yellow-500">-->
+        <!--                            <ion-icon name="star"></ion-icon>-->
+        <!--                            <ion-icon name="star"></ion-icon>-->
+        <!--                            <ion-icon name="star"></ion-icon>-->
+        <!--                            <ion-icon name="star"></ion-icon>-->
+        <!--                            <ion-icon name="star-half-outline"></ion-icon>-->
+        <!--                        </div>-->
+        <!--                        <h4 class="font-bold text-lg">-->
+        <!--                            SHAMPOO, CONDITIONER & FACEWASH PACKS-->
+        <!--                        </h4>-->
+        <!--                        <p>-->
+        <!--                            Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor sit-->
+        <!--                            amet consectetur Lorem ipsum dolor-->
+        <!--                        </p>-->
+        <!--                        <div>-->
+        <!--                            <strong class="text-red-400 font-bold text-xl">$150.00</strong>-->
+        <!--                            <s class="text-xl text-gray-500">$200.00</s>-->
+        <!--                        </div>-->
+        <!--                        <button-->
+        <!--                                class="bg-red-500 text-white rounded-xl py-2 px-4 text-md font-semibold"-->
+        <!--                        >-->
+        <!--                            ADD TO CART-->
+        <!--                        </button>-->
+        <!--                        <h3 class="mt-4 font-semibold text-sm">HURRY UP! OFFER ENDS IN:</h3>-->
+        <!--                        <div-->
+        <!--                                id="reverseTimer"-->
+        <!--                                class="flex justify-between items-center gap-4 font-semibold text-sm text-black"-->
+        <!--                        >-->
+        <!--                            <h1-->
+        <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
+        <!--                                    id="days"-->
+        <!--                            ></h1>-->
+        <!--                            <h1-->
+        <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
+        <!--                                    id="hour"-->
+        <!--                            ></h1>-->
+        <!--                            <h1-->
+        <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
+        <!--                                    id="minute"-->
+        <!--                            ></h1>-->
+        <!--                            <h1-->
+        <!--                                    class="flex flex-col items-center justify-center bg-gray-300/20 border shadow-lg p-2 w-12 h-12 rounded-lg"-->
+        <!--                                    id="second"-->
+        <!--                            ></h1>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+        <!--            <div class="newProductsContainer">-->
+        <!--                <h1 class="font-semibold text-xl border-b py-4">New Products</h1>-->
+        <!--                <div-->
+        <!--                        id="newProducts"-->
+        <!--                        class="newProducts grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"-->
+        <!--                ></div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </section>
 
-    <div
-            class="mt-10 w-full px-8 lg:px-0 lg:w-5/6 mx-auto flex flex-wrap lg:flex-nowrap flex-col lg:flex-row gap-8 mb-20"
-    >
+    <div class="mt-10 w-full px-8 lg:px-0 lg:w-5/6 mx-auto flex flex-wrap lg:flex-nowrap flex-col lg:flex-row gap-8 mb-20">
         <!--        <div class="testimonial w-full lg:w-2/6">-->
         <!--            <h1 class="text-xl font-semibold border-b pb-4 mb-8">Testimonial</h1>-->
         <!--            <div-->
