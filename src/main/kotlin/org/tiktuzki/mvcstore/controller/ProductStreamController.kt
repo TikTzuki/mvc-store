@@ -4,7 +4,6 @@ import org.springframework.http.MediaType
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-import org.thymeleaf.spring6.context.webflux.ReactiveDataDriverContextVariable
 import reactor.core.publisher.Flux
 
 @RestController

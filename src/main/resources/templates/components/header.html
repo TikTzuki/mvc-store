@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<header th:fragment="header" class="header w-full">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<link href="/assets/style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/swiper@8/swiper-bundle.min.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<header class="header w-full" th:fragment="header">
     <div
             class="top-header w-screen flex flex-col items-center justify-between border-b"
     >
@@ -18,24 +23,22 @@
                 >
                     <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
-                <a
-                        class="text-gray-700 bg-gray-300/50 p-1 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center transition-all"
-                        href="#"
-                >
+                <a class="text-gray-700 bg-gray-300/50 p-1 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center transition-all"
+                   href="#">
                     <ion-icon name="logo-github"></ion-icon>
                 </a>
             </div>
             <h3 class="text-gray-400 font-semibold text-xs">
-                FREE SHIPPING THIS WEEK ORDER OVER - $55
+                Sơn Lâm Wedding
             </h3>
             <div class="select hidden md:flex">
-                <select class="mr-2 p-1 px-2 text-sm font-semibold" id="currency">
-                    <option value="USD">USD $</option>
-                    <option value="EUR">EUR €</option>
-                </select>
+                <!--                <select class="mr-2 p-1 px-2 text-sm font-semibold" id="currency">-->
+                <!--                    <option value="USD">USD $</option>-->
+                <!--                    <option value="EUR">EUR €</option>-->
+                <!--                </select>-->
                 <select class="mr-2 p-1 px-2 text-sm font-semibold" id="language">
-                    <option value="Persian">English</option>
-                    <option value="English">Persian</option>
+                    <option th:text="#{lang.vi}" value="en"></option>
+                    <option th:text="#{lang.eng}" value="vi"></option>
                 </select>
             </div>
         </div>
@@ -46,8 +49,8 @@
             <form class="relative w-full sm:w-3/5">
                 <input
                         class="w-full h-full p-2 border rounded-xl"
-                        placeholder="Enter Your Product Name..."
                         id="search"
+                        th:placeholder="#{search.placeholder}"
                         type="text"
                 />
                 <label class="absolute right-2 top-2" for="search">
@@ -80,260 +83,169 @@
     <!--todo desktop Navbar -->
     <div class="desktopNavbar">
         <nav class="my-4 hidden lg:flex justify-center">
-            <ul
-                    class="desktopNavbarUl flex justify-center items-center gap-12 font-sm font-bold text-gray-600"
-            >
-                <li class="nav_items relative">
-                    <a href="#Home">HOME</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                </li>
-                <li class="nav_items relative category_nav_item">
-                    <a href="#Categories">CATEGORIES</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                    <!--? hoverItems -->
-                    <ul
-                            class="categoriesItem absolute top-10 shadow-lg rounded-xl hidden grid-cols-4 p-4 gap-4 border text-gray-400 font-normal bg-white z-10"
-                    >
-                        <li>
-                            <h3 class="border-b py-2 mb-4 text-gray-900 font-semibold">
-                                Electronics
-                            </h3>
-                            <ul class="flex flex-col items-start justify-start gap-2">
-                                <li>
-                                    <a href="#"> Desktop </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Laptop </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Camera </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Tablet </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Headphone </a>
-                                </li>
-                                <li>
-                                    <img
-                                            src="./assets/images/electronics-banner-1.jpg"
-                                            alt="pic"
-                                    />
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3 class="border-b py-2 mb-4 text-gray-900 font-semibold">
-                                Men's
-                            </h3>
-                            <ul class="flex flex-col items-start justify-start gap-2">
-                                <li>
-                                    <a href="#"> Formal </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Casual </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Sports </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Jacket </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Sunglasses </a>
-                                </li>
-                                <li>
-                                    <img
-                                            src="./assets/images/electronics-banner-2.jpg"
-                                            alt="pic"
-                                    />
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3 class="border-b py-2 mb-4 text-gray-900 font-semibold">
-                                Women's
-                            </h3>
-                            <ul class="flex flex-col items-start justify-start gap-2">
-                                <li>
-                                    <a href="#"> Formal </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Casual </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Perfume </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Cosmetics </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Bags </a>
-                                </li>
-                                <li><img src="./assets/images/mens-banner.jpg" alt="pic"/></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3 class="border-b py-2 mb-4 text-gray-900 font-semibold">
-                                Electronics
-                            </h3>
-                            <ul class="flex flex-col items-start justify-start gap-2">
-                                <li>
-                                    <a href="#"> Smart </a>
-                                    Watch
-                                </li>
-                                <li>
-                                    <a href="#"> Smart </a>
-                                    TV
-                                </li>
-                                <li>
-                                    <a href="#"> Keyboard </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Mouse </a>
-                                </li>
-                                <li>
-                                    <a href="#"> Microphone </a>
-                                </li>
-                                <li>
-                                    <img src="./assets/images/womens-banner.jpg" alt="pic"/>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!--? hoverItems -->
-                </li>
-                <li class="nav_items relative men_nav_item">
-                    <a href="#Men">MEN'S</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                    <!--? hoverItems -->
-                    <ul
-                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"
-                    >
-                        <li>
-                            <a href="#">Shirt</a>
-                        </li>
-                        <li>
-                            <a href="#">Shorts & Jeans</a>
-                        </li>
-                        <li>
-                            <a href="#">Safety</a>
-                        </li>
-                        <li>
-                            <a href="#">Wallet</a>
-                        </li>
-                    </ul>
-                    <!--? hoverItems -->
-                </li>
-                <li class="nav_items relative women_nav_item">
-                    <a href="#Women">WOMEN'S</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                    <!--? hoverItems -->
-                    <ul
-                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"
-                    >
-                        <li>
-                            <a href="#">Dress & Frock</a>
-                        </li>
-                        <li>
-                            <a href="#">Earrings</a>
-                        </li>
-                        <li>
-                            <a href="#">Necklace</a>
-                        </li>
-                        <li>
-                            <a href="#">Makeup Kit</a>
-                        </li>
-                    </ul>
-                    <!--? hoverItems -->
-                </li>
-                <li class="nav_items relative jewelry_nav_item">
-                    <a href="#Jewelry">JEWELRY</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                    <!--? hoverItems -->
-                    <ul
-                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"
-                    >
-                        <li>
-                            <a href="#">Earrings</a>
-                        </li>
-                        <li>
-                            <a href="#">Couple Rings</a>
-                        </li>
-                        <li>
-                            <a href="#">Necklace</a>
-                        </li>
-                        <li>
-                            <a href="#">Bracelets</a>
-                        </li>
-                    </ul>
-                    <!--? hoverItems -->
-                </li>
-                <li class="nav_items relative perfume_nav_item">
-                    <a href="#Perfume">PERFUME</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                    <!--? hoverItems -->
-                    <ul
-                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"
-                    >
-                        <li>
-                            <a href="#">Clothes Perfume</a>
-                        </li>
-                        <li>
-                            <a href="#">Flower Fragrance</a>
-                        </li>
-                        <li>
-                            <a href="#">Safety</a>
-                        </li>
-                        <li>
-                            <a href="#">Air Freshener</a>
-                        </li>
-                    </ul>
-                    <!--? hoverItems -->
-                </li>
-                <li class="nav_items relative">
-                    <a href="#Blog">BLOG</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                </li>
-                <li class="nav_items relative">
-                    <a href="#HotOffers">HOT OFFERS</a>
-                    <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
-                    ></span>
-                </li>
+            <ul class="desktopNavbarUl flex justify-center items-center gap-12 font-sm font-bold text-gray-600" id="desktopNavbarUL">
+                <script type="module">
+                    import {MenuItems} from "/assets/dummy.js";
+
+                    const content = MenuItems.map(menuItem => {
+                        return `
+                        <li class="nav_items relative parent_nav_item">
+                            <a href="${menuItem.href}">${menuItem.title}</a>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>`
+                            + (menuItem.subItem != null
+                                ?
+                                `<ul class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white">`
+                                + menuItem.subItem.map(subItem => `
+                                <li >
+                                   <a href="${subItem.href}">${subItem.title}</a>
+                                </li>`).join('')
+                                + `</ul>` : "")
+                            + `</li>`
+                    }).join('');
+                    console.log(content)
+                    document.getElementById("desktopNavbarUL").innerHTML += content;
+                </script>
+                <!--                <li class="nav_items relative">-->
+                <!--                    <a href="#Home">HOME</a>-->
+                <!--                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative category_nav_item">-->
+                <!--                    <a href="#Categories">CATEGORIES</a>-->
+                <!--                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                    <ul class="categoriesItem absolute top-10 shadow-lg rounded-xl hidden grid-cols-4 p-4 gap-4 border text-gray-400 font-normal bg-white z-10">-->
+                <!--                        <li th:each="category : ${categories}">-->
+                <!--                            <h3 class="border-b py-2 mb-4 text-gray-900 font-semibold"-->
+                <!--                                th:text="${category.getName()}">-->
+                <!--                            </h3>-->
+                <!--                            <ul class="flex flex-col items-start justify-start gap-2">-->
+                <!--                                <li th:each="subCate : ${category.getSubcategories()}">-->
+                <!--                                    <a href="#" th:text="${subCate.getName()}"></a>-->
+                <!--                                </li>-->
+                <!--                            </ul>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative men_nav_item">-->
+                <!--                    <a href="#Men">MEN'S</a>-->
+                <!--                    <span-->
+                <!--                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"-->
+                <!--                    ></span>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                    <ul-->
+                <!--                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"-->
+                <!--                    >-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Shirt</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Shorts & Jeans</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Safety</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Wallet</a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative women_nav_item">-->
+                <!--                    <a href="#Women">WOMEN'S</a>-->
+                <!--                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                    <ul-->
+                <!--                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"-->
+                <!--                    >-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Dress & Frock</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Earrings</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Necklace</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Makeup Kit</a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative jewelry_nav_item">-->
+                <!--                    <a href="#Jewelry">JEWELRY</a>-->
+                <!--                    <span-->
+                <!--                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"-->
+                <!--                    ></span>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                    <ul-->
+                <!--                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"-->
+                <!--                    >-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Earrings</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Couple Rings</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Necklace</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Bracelets</a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative perfume_nav_item">-->
+                <!--                    <a href="#Perfume">PERFUME</a>-->
+                <!--                    <span-->
+                <!--                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"-->
+                <!--                    ></span>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                    <ul-->
+                <!--                            class="hoveredItems w-52 absolute top-10 hidden flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white"-->
+                <!--                    >-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Clothes Perfume</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Flower Fragrance</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Safety</a>-->
+                <!--                        </li>-->
+                <!--                        <li>-->
+                <!--                            <a href="#">Air Freshener</a>-->
+                <!--                        </li>-->
+                <!--                    </ul>-->
+                <!--                    &lt;!&ndash;? hoverItems &ndash;&gt;-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative">-->
+                <!--                    <a href="#Blog">BLOG</a>-->
+                <!--                    <span-->
+                <!--                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"-->
+                <!--                    ></span>-->
+                <!--                </li>-->
+                <!--                <li class="nav_items relative">-->
+                <!--                    <a href="#HotOffers">HOT OFFERS</a>-->
+                <!--                    <span-->
+                <!--                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"-->
+                <!--                    ></span>-->
+                <!--                </li>-->
             </ul>
         </nav>
     </div>
 
-    <!--? mobile Navbar -->
     <div class="mobileNavbar">
-        <!--? navbar button -->
-        <div
-                style="box-shadow: 0 0 0.3rem lightgray"
-                class="z-10 bg-white w-96 lg:hidden flex justify-around items-center p-4 border rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 text-lg"
-        >
+        <div class="z-10 bg-white w-96 lg:hidden flex justify-around items-center p-4 border rounded-t-xl fixed bottom-0 left-1/2 -translate-x-1/2 text-lg"
+             style="box-shadow: 0 0 0.3rem lightgray">
             <button id="openNavbarButton" type="button">
                 <ion-icon name="menu-outline"></ion-icon>
             </button>
 
             <button class="relative" type="button">
-            <span
-                    class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full"
-            >
+            <span class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">
               0
             </span>
                 <ion-icon name="bag-handle-outline"></ion-icon>
@@ -344,9 +256,7 @@
             </button>
 
             <button class="relative" type="button">
-            <span
-                    class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full"
-            >
+            <span class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">
               0
             </span>
                 <ion-icon name="heart-outline"></ion-icon>
@@ -358,8 +268,8 @@
         </div>
         <!--* overlay -->
         <div
-                id="overlayNavbar"
                 class="hidden fixed top-0 left-0 w-screen h-screen bg-gray-500/30 z-10"
+                id="overlayNavbar"
         ></div>
 
         <!--! sidebarNavbar -->
@@ -420,39 +330,33 @@
             <div class="mobile_navbar_item border-b pb-3 text-gray-600">
                 <details>
                     <div class="border rounded-xl shadow-xl flex flex-col items-start">
-                        <a class="border-b w-full pb-2" href="#">English</a>
-                        <a class="border-b w-full pb-2" href="#">Persian</a>
+                        <a class="border-b w-full pb-2" href="#" th:text="#{lang.vi}"></a>
+                        <a class="border-b w-full pb-2" href="#" th:text="#{lang.eng}"></a>
                     </div>
                     <summary>Language</summary>
                 </details>
             </div>
-            <div class="mobile_navbar_item border-b pb-3 text-gray-600">
-                <details>
-                    <div class="border rounded-xl shadow-xl flex flex-col items-start">
-                        <a class="border-b w-full pb-2" href="#">USD $</a>
-                        <a class="border-b w-full pb-2" href="#">EUR €</a>
-                    </div>
-                    <summary>Currency</summary>
-                </details>
-            </div>
+            <!--            <div class="mobile_navbar_item border-b pb-3 text-gray-600">-->
+            <!--                <details>-->
+            <!--                    <div class="border rounded-xl shadow-xl flex flex-col items-start">-->
+            <!--                        <a class="border-b w-full pb-2" href="#">USD $</a>-->
+            <!--                        <a class="border-b w-full pb-2" href="#">EUR €</a>-->
+            <!--                    </div>-->
+            <!--                    <summary>Currency</summary>-->
+            <!--                </details>-->
+            <!--            </div>-->
 
             <div class="icons flex items-center justify-center gap-4">
-                <a
-                        class="text-gray-900 bg-gray-300/50 p-2 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center"
-                        href="#"
-                >
+                <a class="text-gray-900 bg-gray-300/50 p-2 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center"
+                   href="#">
                     <ion-icon name="logo-instagram"></ion-icon>
                 </a>
-                <a
-                        class="text-gray-900 bg-gray-300/50 p-2 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center"
-                        href="#"
-                >
+                <a class="text-gray-900 bg-gray-300/50 p-2 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center"
+                   href="#">
                     <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
-                <a
-                        class="text-gray-900 bg-gray-300/50 p-2 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center"
-                        href="#"
-                >
+                <a class="text-gray-900 bg-gray-300/50 p-2 rounded-md hover:scale-110 hover:text-white hover:bg-red-400 flex items-center justify-center"
+                   href="#">
                     <ion-icon name="logo-github"></ion-icon>
                 </a>
             </div>
@@ -460,8 +364,8 @@
 
         <!--todo sidebarCategories -->
         <div
+                class="fixed hidden top-0 w-80 h-screen bg-white p-6 shadow-lg flex-col justify-start gap-4 font-semibold overflow-auto z-20"
                 id="sidebarCategories"
-                class="fixed top-0 w-80 h-screen bg-white p-6 shadow-lg hidden flex-col justify-start gap-4 font-semibold overflow-auto z-20"
         >
             <div class="categories w-full h-auto">
                 <div class="w-full flex items-center justify-between">
@@ -470,300 +374,15 @@
                         <ion-icon name="close-circle-outline"></ion-icon>
                     </button>
                 </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Shirt</a>
-                            <span>300</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Shorts & Jeans</a>
-                            <span>30</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Jacket</a>
-                            <span>50</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Dress & Frock</a>
-                            <span>120</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Clothes
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/dress.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Sports</a>
-                            <span>300</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Formal</a>
-                            <span>30</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Casual</a>
-                            <span>50</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Safety Shoes</a>
-                            <span>120</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Footwear
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/shoes.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Earrings</a>
-                            <span>300</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Couple Rings</a>
-                            <span>30</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Necklace</a>
-                            <span>50</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Jewelry
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/jewelry.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Clothes Perfume</a>
-                            <span>300</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Deodorant</a>
-                            <span>30</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Jacket</a>
-                            <span>50</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Dress & Frock</a>
-                            <span>120</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Perfume
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/perfume.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Shampoo</a>
-                            <span>300</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Sunscreen</a>
-                            <span>30</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Body Wash</a>
-                            <span>50</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Makeup Kit</a>
-                            <span>120</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Cosmetics
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/cosmetics.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Sunglasses</a>
-                            <span>23</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Lenses</a>
-                            <span>53</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Glasses
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/glasses.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-                <div class="border-b pb-3 text-lg text-gray-600">
-                    <details>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Wallet</a>
-                            <span>300</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Purse</a>
-                            <span>30</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Gym Backpack</a>
-                            <span>50</span>
-                        </div>
-                        <div class="flex justify-between items-baseline text-sm">
-                            <a href="#">Shopping Bag</a>
-                            <span>120</span>
-                        </div>
-                        <summary>
-                            <div class="flex items-center gap-2">
-                                Bags
-                                <img
-                                        class="w-4 h-4"
-                                        src="./assets/images/icons/bag.svg"
-                                        alt="productPicture"
-                                />
-                            </div>
-                        </summary>
-                    </details>
-                </div>
-            </div>
-
-            <div
-                    class="bestsellers w-full h-auto mt-2 flex flex-col items-start justify-start gap-4"
-            >
-                <h2 class="text-lg font-semibold">BEST SELLERS</h2>
-                <div class="flex items-center justify-start gap-2">
-                    <div class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md">
-                        <img
-                                class="w-full h-full"
-                                src="./assets/images/products/1.jpg"
-                                alt=""
-                        />
-                    </div>
-                    <div class="text-gray-700">
-                        <h4 class="text-gray-900">Baby Fabric Shoes</h4>
-                        <div class="stars text-yellow-500">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half-outline"></ion-icon>
-                        </div>
-                        <div class="flex items-center justify-start gap-4">
-                            <s class="text-gray-500">$14.00</s> <strong>$7.00</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center justify-start gap-2">
-                    <div class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md">
-                        <img
-                                class="w-full h-full"
-                                src="./assets/images/products/2.jpg"
-                                alt=""
-                        />
-                    </div>
-                    <div class="text-gray-700">
-                        <h4 class="text-gray-900">Men's Hoodies T-Shirt</h4>
-                        <div class="stars text-yellow-500">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half-outline"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                        </div>
-                        <div class="flex items-center justify-start gap-4">
-                            <s class="text-gray-500">$5.00</s> <strong>$2.00</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center justify-start gap-2">
-                    <div class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md">
-                        <img
-                                class="w-full h-full"
-                                src="./assets/images/products/3.jpg"
-                                alt=""
-                        />
-                    </div>
-                    <div class="text-gray-700">
-                        <h4 class="text-gray-900">Girls T-Shirt</h4>
-                        <div class="stars text-yellow-500">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half-outline"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                        </div>
-                        <div class="flex items-center justify-start gap-4">
-                            <s class="text-gray-500">$10.00</s> <strong>$5.00</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center justify-start gap-2">
-                    <div class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md">
-                        <img
-                                class="w-full h-full"
-                                src="./assets/images/products/4.jpg"
-                                alt=""
-                        />
-                    </div>
-                    <div class="text-gray-700">
-                        <h4 class="text-gray-900">Woolen Hat For Men</h4>
-                        <div class="stars text-yellow-500">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half-outline"></ion-icon>
-                        </div>
-                        <div class="flex items-center justify-start gap-4">
-                            <s class="text-gray-500">$24.00</s> <strong>$17.00</strong>
-                        </div>
-                    </div>
-                </div>
+                <form name="product-filter">
+                    <h3 class="sr-only">Categories</h3>
+                </form>
             </div>
         </div>
     </div>
     <!--? Navbar -->
 </header>
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="/assets/index.js" type="module"></script>
+</html>

@@ -1,3 +1,7 @@
+:root {
+    --rose: #f43f5e;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,27 +10,34 @@
     background-position: center center;
     background-size: cover;
     user-select: none;
-    outline-color: tomato;
+    outline-color: var(--rose);
 }
+
 body {
     overflow-x: hidden;
 }
+
 a {
     text-decoration: none;
 }
+
 li {
     list-style: none;
 }
+
 img {
     width: 100%;
 }
+
 ::-webkit-scrollbar {
     width: 0.5rem;
 }
+
 ::-webkit-scrollbar-thumb {
-    background-color: tomato;
+    background-color: var(--rose);
     border-radius: 1rem;
 }
+
 ::-webkit-scrollbar-track {
     background-color: #616161;
 }
@@ -35,30 +46,38 @@ img {
 .nav_items {
     padding-bottom: 1rem;
 }
+
 .nav_items:hover > span {
     width: 100%;
 }
+
 .category_nav_item:hover .categoriesItem {
     display: grid;
 }
+
 .men_nav_item:hover .hoveredItems,
 .women_nav_item:hover .hoveredItems,
 .jewelry_nav_item:hover .hoveredItems,
-.perfume_nav_item:hover .hoveredItems {
+.perfume_nav_item:hover .hoveredItems,
+.parent_nav_item:hover .hoveredItems {
     display: flex;
 }
+
 .categoriesItem {
     width: 70rem;
     left: -13.5rem;
     animation: hoverAnimation 0.3s ease-in-out forwards;
 }
+
 .hoveredItems {
     z-index: 10;
     animation: hoverAnimation 0.3s ease-in-out forwards;
 }
+
 .desktopNavbar a:hover {
-    color: tomato;
+    color: var(--rose);
 }
+
 @keyframes hoverAnimation {
     from {
         transform: translateY(2rem);
@@ -69,27 +88,33 @@ img {
         opacity: 1;
     }
 }
+
 @media screen and (max-width: 1150px) {
     .desktopNavbarUl {
         gap: 2rem !important;
     }
+
     .categoriesItem {
         width: 60rem !important;
         left: -10.5rem;
     }
 }
+
 details {
     display: flex;
     align-items: flex-start;
 }
+
 details a {
     margin: 0.3rem;
     margin-top: 1rem;
     color: #899098;
 }
+
 details a:hover {
-    color: tomato;
+    color: var(--rose);
 }
+
 details > summary {
     direction: rtl;
     display: flex;
@@ -120,6 +145,7 @@ details[open] > summary {
 #sidebarCategories {
     animation: mobileNavbar 0.5s ease-in-out forwards;
 }
+
 @keyframes mobileNavbar {
     from {
         opacity: 0;
@@ -131,9 +157,11 @@ details[open] > summary {
         transform: translateX(-100%);
     }
 }
+
 #newspaperBox {
     animation: newspaper 0.4s ease-in-out forwards;
 }
+
 @keyframes newspaper {
     from {
         opacity: 0;
@@ -144,50 +172,61 @@ details[open] > summary {
         transform: scale(1);
     }
 }
+
 #sidebarNavbar.show,
 #sidebarCategories.show,
 #overlayNavbar.show,
 #newspaper.show {
     display: flex;
 }
+
 /* main  Banner */
 .swiper {
     width: 80%;
     height: 60vh;
 }
+
 .categories_swiper {
     width: 80%;
     height: 5rem !important;
     display: flex;
 }
+
 .blog_swiper {
     width: 85%;
     height: 20rem !important;
 }
+
 .swiper-scrollbar-drag,
 .swiper-scrollbar {
     background-color: transparent !important;
 }
+
 .swiper:hover .swiper-scrollbar {
     background-color: #f776569c !important;
 }
+
 .swiper:hover .swiper-scrollbar-drag {
-    background-color: tomato !important;
+    background-color: var(--rose) !important;
 }
+
 @media screen and (max-width: 1100px) {
     .swiper {
         height: 40vh;
     }
 }
+
 /* product */
 .aside_section::-webkit-scrollbar {
     width: 0.3rem !important;
     display: block;
 }
+
 .aside_section::-webkit-scrollbar-button {
     height: 5rem !important;
     background-color: transparent;
 }
+
 .aside_section::-webkit-scrollbar-track {
     border-radius: 0.5rem;
     background-color: transparent;
@@ -196,21 +235,25 @@ details[open] > summary {
 .aside_section::-webkit-scrollbar-thumb {
     background-color: transparent;
 }
+
 .aside_section:hover::-webkit-scrollbar-track {
     background-color: #616161 !important;
 }
+
 .aside_section:hover::-webkit-scrollbar-thumb {
-    background-color: tomato !important;
+    background-color: var(--rose) !important;
 }
 
 .product_hover_pic {
     opacity: 0;
     transition: 0.2s;
 }
+
 .product_pic:hover .product_hover_pic {
     opacity: 1;
     transform: scale(1.2);
 }
+
 .productOptions {
     animation: productopt 0.2s ease-out forwards;
 }
@@ -218,6 +261,7 @@ details[open] > summary {
 .product_pic:hover .productOptions {
     display: flex !important;
 }
+
 @keyframes productopt {
     from {
         transform: translateX(2rem);
@@ -226,13 +270,16 @@ details[open] > summary {
         transform: translateX(0);
     }
 }
+
 /*! footer */
 hr {
     border-color: rgba(116, 116, 116, 0.733) !important;
 }
+
 hr.title {
-    border-color: tomato !important;
+    border-color: var(--rose) !important;
 }
+
 footer a:hover {
-    color: tomato;
+    color: var(--rose);
 }

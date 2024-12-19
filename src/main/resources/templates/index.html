@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html th:lang="${#locale.language}">
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!--* favicon -->
     <link
-            rel="shortcut icon"
             href="./assets/images/logo/favicon.ico"
+            rel="shortcut icon"
             type="image/x-icon"
     />
     <!--! css link -->
-    <link rel="stylesheet" href="/assets/style.css"/>
+    <link href="/assets/style.css" rel="stylesheet"/>
     <!--? swiperjs cdn link -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <link href="https://unpkg.com/swiper@8/swiper-bundle.min.css" rel="stylesheet"/>
     <!--todo tailwind cdn link -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        clifford: "#da373d",
-                    },
+                    colors: {},
                 },
             },
         };
@@ -75,7 +73,7 @@
 <!--    </div>-->
 <!--</div>-->
 
-<header th:replace="components/header :: header"></header>
+<header th:replace="~{components/header :: header}"></header>
 
 <main>
     <!-- !banner -->
@@ -106,141 +104,42 @@
             <div class="aside_section overflow-y-auto">
                 <div class="categories w-full rounded-xl p-4 bg-white border shadow-lg">
                     <h1 class="text-xl font-semibold mb-4">CATEGORY</h1>
-                    <div class="border-b pb-3 text-lg text-gray-600" th:each="category : ${categories}">
-                        <details>
-                            <summary>
-                                <div class="flex items-center gap-2" th:text="${category.getName()}">
-                                    <img
-                                            class="w-4 h-4"
-                                            src="./assets/images/icons/dress.svg"
-                                            alt="productPicture"
-                                    />
-                                </div>
-                            </summary>
-                            <div class="flex justify-between items-baseline text-sm" th:each="subCate : ${category.getSubcategories()}">
-                                <a href="#" th:text="${subCate.getName()}"></a>
-                                <span th:text="${subCate.getCount()}"></span>
-                            </div>
-                        </details>
-                    </div>
+                    <form class="hidden lg:block" name="product-filter">
+                        <h3 class="sr-only">Categories</h3>
+                    </form>
+                    <!--                    <div class="border-b pb-3 text-lg text-gray-600" th:each="category : ${categories}">-->
+                    <!--                        <details>-->
+                    <!--                            <summary>-->
+                    <!--                                <div class="flex items-center gap-2" th:text="${category.getName()}">-->
+                    <!--                                    <img-->
+                    <!--                                            class="w-4 h-4"-->
+                    <!--                                            src="./assets/images/icons/dress.svg"-->
+                    <!--                                            alt="productPicture"-->
+                    <!--                                    />-->
+                    <!--                                </div>-->
+                    <!--                            </summary>-->
+                    <!--                            <div class="flex justify-between items-baseline text-sm" th:each="subCate : ${category.getSubcategories()}">-->
+                    <!--                                <a href="#" th:text="${subCate.getName()}"></a>-->
+                    <!--                                <span th:text="${subCate.getCount()}"></span>-->
+                    <!--                            </div>-->
+                    <!--                        </details>-->
+                    <!--                    </div>-->
                 </div>
-
-                <!--                <div-->
-                <!--                        class="bestsellers 2-72 h-auto mt-10 flex flex-col items-start justify-start gap-4"-->
-                <!--                >-->
-                <!--                    <h2 class="text-lg font-semibold">BEST SELLERS</h2>-->
-                <!--                    <div class="flex items-center justify-start gap-2">-->
-                <!--                        <div-->
-                <!--                                class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md"-->
-                <!--                        >-->
-                <!--                            <img-->
-                <!--                                    class="w-full h-full"-->
-                <!--                                    src="./assets/images/products/1.jpg"-->
-                <!--                                    alt=""-->
-                <!--                            />-->
-                <!--                        </div>-->
-                <!--                        <div class="text-gray-700">-->
-                <!--                            <h4 class="text-gray-900">Baby Fabric Shoes</h4>-->
-                <!--                            <div class="stars text-yellow-500">-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star-half-outline"></ion-icon>-->
-                <!--                            </div>-->
-                <!--                            <div class="flex items-center justify-start gap-4">-->
-                <!--                                <s class="text-gray-500">$14.00</s> <strong>$7.00</strong>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    <div class="flex items-center justify-start gap-2">-->
-                <!--                        <div-->
-                <!--                                class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md"-->
-                <!--                        >-->
-                <!--                            <img-->
-                <!--                                    class="w-full h-full"-->
-                <!--                                    src="./assets/images/products/2.jpg"-->
-                <!--                                    alt=""-->
-                <!--                            />-->
-                <!--                        </div>-->
-                <!--                        <div class="text-gray-700">-->
-                <!--                            <h4 class="text-gray-900">Men's Hoodies T-Shirt</h4>-->
-                <!--                            <div class="stars text-yellow-500">-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star-half-outline"></ion-icon>-->
-                <!--                                <ion-icon name="star-outline"></ion-icon>-->
-                <!--                            </div>-->
-                <!--                            <div class="flex items-center justify-start gap-4">-->
-                <!--                                <s class="text-gray-500">$5.00</s> <strong>$2.00</strong>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    <div class="flex items-center justify-start gap-2">-->
-                <!--                        <div-->
-                <!--                                class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md"-->
-                <!--                        >-->
-                <!--                            <img-->
-                <!--                                    class="w-full h-full"-->
-                <!--                                    src="./assets/images/products/3.jpg"-->
-                <!--                                    alt=""-->
-                <!--                            />-->
-                <!--                        </div>-->
-                <!--                        <div class="text-gray-700">-->
-                <!--                            <h4 class="text-gray-900">Girls T-Shirt</h4>-->
-                <!--                            <div class="stars text-yellow-500">-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star-half-outline"></ion-icon>-->
-                <!--                                <ion-icon name="star-outline"></ion-icon>-->
-                <!--                                <ion-icon name="star-outline"></ion-icon>-->
-                <!--                            </div>-->
-                <!--                            <div class="flex items-center justify-start gap-4">-->
-                <!--                                <s class="text-gray-500">$10.00</s> <strong>$5.00</strong>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    <div class="flex items-center justify-start gap-2">-->
-                <!--                        <div-->
-                <!--                                class="w-20 h-20 p-2 border shadow-lg bg-gray-300/20 rounded-md"-->
-                <!--                        >-->
-                <!--                            <img-->
-                <!--                                    class="w-full h-full"-->
-                <!--                                    src="./assets/images/products/4.jpg"-->
-                <!--                                    alt=""-->
-                <!--                            />-->
-                <!--                        </div>-->
-                <!--                        <div class="text-gray-700">-->
-                <!--                            <h4 class="text-gray-900">Woolen Hat For Men</h4>-->
-                <!--                            <div class="stars text-yellow-500">-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star"></ion-icon>-->
-                <!--                                <ion-icon name="star-half-outline"></ion-icon>-->
-                <!--                            </div>-->
-                <!--                            <div class="flex items-center justify-start gap-4">-->
-                <!--                                <s class="text-gray-500">$24.00</s> <strong>$17.00</strong>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </div>
         </aside>
 
         <div
-                id="productsCatalog"
-                class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8"
+                id="productsCatalog">
             <h2 class="sr-only">Products</h2>
 
             <div
 
                     class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                <a href="#" class="group" th:each="product : ${productPage.iterator()}">
-                    <img th:src="${product.getImage()}"
+                <a class="group" href="#" th:each="product : ${productPage.iterator()}">
+                    <img class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]"
                          th:alt="${product.getName()}"
-                         class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
+                         th:src="${product.getImage()}">
                     <h3 class="mt-4 text-sm text-gray-700" th:text="${product.getName()}"></h3>
                     <p class="mt-1 text-lg font-medium text-gray-900" th:text="${product.getPrice()} + 'đ'">
                     </p>
@@ -261,39 +160,39 @@
                     </p>
                 </div>
                 <div>
-                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                    <nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
                         <a
-                                th:if="${productPage.getNumber() > 0}"
+                                class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                                 th:href="'?page='+${productPage.getNumber()-1} + '#productsCatalog'"
-                                class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                th:if="${productPage.getNumber() > 0}">
                             <span class="sr-only">Previous</span>
-                            <svg class="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
-                                      clip-rule="evenodd"/>
+                            <svg aria-hidden="true" class="size-5" data-slot="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path clip-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                                      fill-rule="evenodd"/>
                             </svg>
                         </a>
                         <th:block th:each="pageNum : ${prevPages}">
-                            <a th:href="'?page='+${pageNum}+'#productsCatalog'"
-                               th:text="${pageNum}"
-                               class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"></a>
+                            <a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                               th:href="'?page='+${pageNum}+'#productsCatalog'"
+                               th:text="${pageNum}"></a>
                         </th:block>
 
-                        <a th:text="${productPage.getNumber()}"
-                           class="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"></a>
+                        <a class="relative z-10 inline-flex items-center bg-rose-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600"
+                           th:text="${productPage.getNumber()}"></a>
 
                         <th:block th:each="pageNum : ${nextPages}">
-                            <a th:href="'?page='+${pageNum}+'#productsCatalog'"
-                               th:text="${pageNum}"
-                               class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"></a>
+                            <a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                               th:href="'?page='+${pageNum}+'#productsCatalog'"
+                               th:text="${pageNum}"></a>
                         </th:block>
 
-                        <a th:if="${productPage.hasNext()}"
+                        <a class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                            th:href="'?page='+${productPage.nextPageable().getPageNumber() + '#productsCatalog'}"
-                           class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                           th:if="${productPage.hasNext()}">
                             <span class="sr-only">Next</span>
-                            <svg class="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                      clip-rule="evenodd"/>
+                            <svg aria-hidden="true" class="size-5" data-slot="icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path clip-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                                      fill-rule="evenodd"/>
                             </svg>
                         </a>
                     </nav>
@@ -585,11 +484,12 @@
     </div>
 </main>
 
-<footer th:replace="components/footer :: footer">
+<footer th:replace="~{components/footer :: footer}">
 </footer>
 
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script type="module" src="/assets/index.js"></script>
+<script src="/assets/index.js" type="module"></script>
+<script src="/assets/filter.js" type="module"></script>
 </body>
 </html>

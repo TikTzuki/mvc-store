@@ -1,21 +1,39 @@
-import { swiperData, TitleCategories, NewProducts, BolgSwiper } from "./dummy.js";
+import {BolgSwiper, swiperData, TitleCategories} from "./dummy.js";
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
 
+const PLUS_ICON = `<svg className="size-5 hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"/>
+</svg>`
+const SUBTRACT_ICON = `<svg className="size-5 hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+    <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd"/>
+</svg>`
 
-const newspaper = document.getElementById("newspaper");
-const newspaperOverlay = document.getElementById("newspaperOverlay");
-const openNavbarButton = document.getElementById("openNavbarButton");
-const overlayNavbar = document.getElementById("overlayNavbar");
-const sidebarNavbar = document.getElementById("sidebarNavbar");
-const categoriesBtn = document.getElementById("categoriesBtn");
-const sidebarCategories = document.getElementById("sidebarCategories");
-const closeButton = document.querySelectorAll(".closeButton");
+const newspaper = "newspaper";
+const newspaperOverlay = "newspaperOverlay";
+const openNavbarButton = "openNavbarButton";
+const overlayNavbar = "overlayNavbar";
+const sidebarNavbar = "sidebarNavbar";
+const categoriesBtn = "categoriesBtn";
+const sidebarCategories = "sidebarCategories";
+const closeButtons = document.querySelectorAll(".closeButton");
 const swiperr = document.querySelector(".swiper");
 const categories_swiper = document.querySelector(".categories_swiper");
 const blog_swiper = document.querySelector(".blog_swiper");
 const details = document.querySelectorAll("details");
 
 
+//! open mobile navbar
+bindOpenButton(openNavbarButton, [sidebarNavbar, overlayNavbar]);
+
+// !open categories sidebar
+bindOpenButton(categoriesBtn, [sidebarCategories, overlayNavbar]);
+
+// click then close
+closeButtons.forEach((item) => {
+    bindCloseButton(item.id, [sidebarNavbar, sidebarCategories, overlayNavbar, newspaper]);
+});
+
+bindCloseButton(overlayNavbar, [sidebarNavbar, sidebarCategories, overlayNavbar, newspaper]);
 
 //! close summary tag when another is open
 // Add the onclick listeners.
@@ -31,41 +49,53 @@ details.forEach((targetDetail) => {
 });
 
 // ! newspaper
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        newspaper.classList.add("show")
-    }, 2000);
-})
-//! close mobile navbar
-overlayNavbar.addEventListener("click", closed);
-newspaperOverlay.addEventListener("click", closed);
-closeButton[0].addEventListener("click", closed);
-closeButton[1].addEventListener("click", closed);
-closeButton[2].addEventListener("click", closed);
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         newspaper.classList.add("show")
+//     }, 2000);
+// })
 
-function closed() {
-    sidebarNavbar.classList.remove("show");
-    sidebarCategories.classList.remove("show");
-    overlayNavbar.classList.remove("show");
-    newspaper.classList.remove('show');
+function bindOpenButton(buttonId, showElementIds) {
+    const button = document.getElementById(buttonId);
+    if (button != null)
+        button.addEventListener("click", () => {
+            showElementIds.forEach(elementId => {
+                const element = document.getElementById(elementId);
+                if (element != null)
+                    element.classList.add("show")
+            })
+        });
 }
 
-//! open mobile navbar
-openNavbarButton.addEventListener("click", openNavbar);
-function openNavbar() {
-    sidebarNavbar.classList.add("show");
-    overlayNavbar.classList.add("show");
+function bindCloseButton(buttonId, showElementIds) {
+    const button = document.getElementById(buttonId);
+    if (button != null)
+        button.addEventListener("click", () => {
+            showElementIds.forEach(elementId => {
+                const element = document.getElementById(elementId);
+                if (element != null)
+                    element.classList.remove("show")
+            })
+        });
 }
-// !open categories sidebar
-categoriesBtn.addEventListener('click', openCategories)
-function openCategories() {
-    sidebarCategories.classList.add("show");
-    overlayNavbar.classList.add("show");
-}
+
+// const desktopNavBar = document.getElementById("desktopNavbarUL");
+// if (desktopNavBar != null) {
+//     desktopNavBar.innerHTML = MenuItems.map(menuItem => {
+//         return `<li class="nav_items relative">
+//                      <a href="#">${menuItem.title}</a>
+//                      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
+//                 </li>
+//                 `
+//     })
+// }
+
 //! swiper data
-document.getElementById("swiperSlide").innerHTML = swiperData.map(
-    (item) =>
-        `
+const swiperSlide = document.getElementById("swiperSlide");
+if (swiperSlide != null) {
+    swiperSlide.innerHTML = swiperData.map(
+        (item) =>
+            `
             <div
   class="swiper-slide cursor-pointer w-full h-full rounded-xl flex items-center"
   data-swiper-autoplay="2000"
@@ -91,13 +121,16 @@ document.getElementById("swiperSlide").innerHTML = swiperData.map(
     </button>
   </div>
 </div>
-  `
-).join("");
+  `).join("");
+}
+
 
 //! title categories swiper data
 
-document.getElementById("titlecategories").innerHTML = TitleCategories.map((item) =>
-    `
+const titleCategories = document.getElementById("titlecategories");
+if (titleCategories != null) {
+    titleCategories.innerHTML = TitleCategories.map((item) =>
+        `
   <div
   class="categories_slide_swiper cursor-pointer rounded-xl swiper-slide h-full flex items-start justify-between border shadow-xl p-4"
   data-swiper-autoplay="1000"
@@ -115,11 +148,13 @@ class="w-12 h-12 border-2 bg-gray-400/20 rounded-lg flex items-center justify-ce
 <span class="text-gray-400 text-xs">${item.count}</span>
         
 </div>
-  `
-).join("");
+  `).join("");
 
-document.getElementById("blog_swiper").innerHTML = BolgSwiper.map((item) => (
-    `
+}
+const blogSwiper = document.getElementById("blog_swiper");
+if (blogSwiper != null) {
+    blogSwiper.innerHTML = BolgSwiper.map((item) => (
+        `
   <div class="swiper-slide">
   <div
    class="rounded-lg w-full h-40"
@@ -131,8 +166,8 @@ document.getElementById("blog_swiper").innerHTML = BolgSwiper.map((item) => (
   <h4 class="text-gray-500 text-xs lg:text-sm">${item.date}</h4>
   </div>
   </div>
-  `
-)).join("");
+  `)).join("");
+}
 
 //! new Products
 // document.getElementById("newProducts").innerHTML = NewProducts.map(

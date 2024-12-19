@@ -198,3 +198,60 @@ export const NewProducts = [
         taxPrice: "$75.00"
     },
 ]
+export const MenuItems = [
+    {
+        title: "HOME",
+        href: "/"
+    },
+    // {
+    //     title: "Women's",
+    //     href: "",
+    //     subItem: [
+    //         {title: "Formal", href: "#"},
+    //         {title: "Casual", href: "#"},
+    //         {title: "Perfume", href: "#"},
+    //         {title: "Cosmetics", href: "#"},
+    //         {title: "Bags", href: "#"},
+    //     ]
+    // },
+    {
+        title: "Tin tức",
+        href: "/info"
+    },
+    {
+        title: "Liên hệ",
+        href: "/contract"
+    },
+]
+export const MONEY_RANGE = [
+    {
+        title: "Dưới 300k",
+        value: "0:300000"
+    },
+    {
+        title: "Từ 300k - 500k",
+        value: "300000:500000"
+    },
+    {
+        title: "Từ 500k - 1tr",
+        value: "500000:1000000"
+    },
+    {
+        title: "Trên 2tr",
+        value: "2000000:"
+    }
+]
+export const PRODUCT_SORT = [
+    {
+        title: "Mới nhất",
+        value: "lastModifiedDate,desc"
+    },
+    {
+        title: "Giá: Thấp đến Cao",
+        value: "price,asc"
+    },
+    {
+        title: "Giá: Cao xuống Thấp",
+        value: "price,desc"
+    },
+]

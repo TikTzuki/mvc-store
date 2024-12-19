@@ -12,6 +12,11 @@ spring:
       port: 31317
       database: trap-store
       uri: mongodb://192.168.1.14:31317/trap-store?authSource=admin
+  web:
+    locale: vi_VN
+    locale-resolver: accept_header
+  messages:
+    basename: i18n/messages
 store:
   name: Sơn Lâm Wedding
 logging:
