@@ -17,13 +17,13 @@ const newFilterTitle = (title) => {
             </h3>`
 }
 
-const newCheckBox = (value, title) => {
+const newCheckBox = (title, value, checked) => {
     return `<div class="pt-6" id="filter-section-0">
                 <div class="space-y-4">
                     <div class="flex gap-3">
                         <div class="flex h-5 shrink-0 items-center">
                             <div class="group grid size-4 grid-cols-1">
-                                <input id="filter-color-0" name="color[]" value="${value}" type="checkbox"
+                                <input id="filter-color-0" name="checkBoxName[]" value="${value}" type="checkbox" ${checked ? 'checked' : ''}
                                        class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-rose-600 checked:bg-rose-600 indeterminate:border-rose-600 indeterminate:bg-rose-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"/>
                                 <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25"
                                      viewBox="0 0 14 14" fill="none">
@@ -37,35 +37,50 @@ const newCheckBox = (value, title) => {
                 </div>
             </div>`
 }
-const newSelect = (items) => {
-    const options = items.map(i => {
-        return `<option value="${i.value}">${i.title}</option>`
-    }).join('');
-    return `<select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-600 block w-full p-2.5">
-                        ${options}
-                    </select>`
-}
 
-const newFilterSection = (type, filterTitle, filterItems) => {
+const SelectFilter = ({filterTitle, filterParam, filterOptions}) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const checkedValue = urlParams.get(filterParam);
+
     const title = newFilterTitle(filterTitle);
-    let content;
-    switch (type) {
-        case "SELECT":
-            content = newSelect(filterItems);
-            break;
-        case "CHECKBOX":
-            content = filterItems.map(item => newCheckBox(item.value, item.title)).join('');
-    }
-    console.log(filterItems, content)
+    const optionsEl = filterOptions.map(i => {
+        return `<option value="${i.value}" ${checkedValue === i.value ? 'selected' : ''}>${i.title}</option>`
+    }).join('');
+    const selectEl = `<select id="countries"
+     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-600 block w-full p-2.5">
+                        ${optionsEl}
+                    </select>`
     return `<div class="border-b border-gray-200 py-6">
-                        ${title} ${content}
+                        ${title} ${selectEl}
                 </div>`
 }
+
+const CheckBoxFilter = ({filterTitle, filterParam, filterItems}) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const checkedValues = urlParams.getAll(filterParam);
+
+    const title = newFilterTitle(filterTitle);
+    let checkboxEl = filterItems.map(item => newCheckBox(item.title, item.value, checkedValues.includes(item.value))).join('');
+    console.log(filterItems, checkboxEl)
+    return `<div class="border-b border-gray-200 py-6">
+                        ${title} ${checkboxEl}
+                </div>`
+}
+
 const filters = document.querySelectorAll("form[name='product-filter']");
 console.log(filters)
 filters.forEach(e => {
     e.innerHTML +=
-        newFilterSection("SELECT", "Sắp xếp", PRODUCT_SORT)
-        + newFilterSection("CHECKBOX", "Khoảng giá", MONEY_RANGE)
+        SelectFilter({
+            filterTitle: "Sắp xếp",
+            filterParam: "sort",
+            filterOptions: PRODUCT_SORT
+        })
+        + CheckBoxFilter({
+                filterTitle: "Khoảng giá",
+                filterParam: "priceRange",
+                filterItems: MONEY_RANGE
+            }
+        )
     ;
 })
