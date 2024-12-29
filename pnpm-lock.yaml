@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  bigdecimal:
+    specifier: ^0.6.1
+    version: 0.6.1
   mongodb:
     specifier: ^6.12.0
     version: 6.12.0
@@ -1004,6 +1007,12 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /bigdecimal@0.6.1:
+    resolution: {integrity: sha512-pFxbEwaZRK6XifePcw22DxJkCzCMw3YAossM884Tkvh9QpdWzFBLkgdnjx29yEickWBVYv1F9DdaDxDaF3dzkw==}
+    engines: {'0': node}
+    hasBin: true
+    dev: false
 
   /binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
